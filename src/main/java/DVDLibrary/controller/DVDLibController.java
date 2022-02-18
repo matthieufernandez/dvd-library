@@ -11,8 +11,14 @@ import java.util.List;
 
 public class DVDLibController {
     private UserIO io = new UserIOConsoleImpl();
-    private DVDLibView view = new DVDLibView();
-    private DVDLibDao dao = new DVDLibDaoImpl();
+
+    private DVDLibView view;
+    private DVDLibDao dao;
+
+    public DVDLibController(DVDLibDao dao, DVDLibView view) {
+        this.dao = dao;
+        this.view = view;
+    }
 
     public void run() {
         boolean keepGoing = true;
