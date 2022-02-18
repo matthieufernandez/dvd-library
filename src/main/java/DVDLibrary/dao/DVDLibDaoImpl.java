@@ -34,7 +34,7 @@ public class DVDLibDaoImpl implements DVDLibDao {
     }
 
     @Override
-    public DVD searchForDVD(String srcString) {
+    public DVD searchForDVD(String searchTerm) {
         return null;
     }
 }

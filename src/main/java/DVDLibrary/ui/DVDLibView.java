@@ -5,7 +5,7 @@ import DVDLibrary.dto.DVD;
 import java.util.List;
 
 public class DVDLibView {
-    private UserIO io = (UserIO) new UserIOConsoleImpl();
+    private UserIO io = new UserIOConsoleImpl();
 
     public int printMenuSelection() {
         io.print("MAIN MENU");
@@ -39,7 +39,7 @@ public class DVDLibView {
 
     public void displayAllDVDs(List<DVD> DVDsList) {
         for (DVD currentDVD : DVDsList) {
-            String DVDInfo = String.format("-- %s -- \nRelease date: [%s] - Rated: [%s] \nDirector: %s - Distributed: %s \nNotes: %s",
+            String DVDInfo = String.format("===<>===<>=== %s ===<>===<>=== \nRelease date: [%s] - Rated: [%s] \nDirector: %s - Distributed: %s \nNotes: %s",
                     currentDVD.getTitle(),
                     currentDVD.getDate(),
                     currentDVD.getRating(),
@@ -53,7 +53,7 @@ public class DVDLibView {
 
     public void displayDVD(DVD dvd) {
         if (dvd != null) {
-            String DVDInfo = String.format("-- %s -- \nRelease date: [%s] - Rated: [%s] \nDirector: %s - Distributed: %s \nNotes: %s",
+            String DVDInfo = String.format("===<>===<>=== %s ===<>===<>=== \nRelease date: [%s] - Rated: [%s] \nDirector: %s - Distributed: %s \nNotes: %s",
                     dvd.getTitle(),
                     dvd.getDate(),
                     dvd.getRating(),
@@ -67,17 +67,54 @@ public class DVDLibView {
         }
     }
 
-    //TODO Create menu for user to choose what property of the DVD object a user wants to modify
-    //TODO Get the user to return 'Y' or 'N' for confirmation methods (must be added to delete method in controller)
-    //TODO Create a method that updates the DVD object as specified by user
+    public int printEditMenu() {
+        io.print("EDIT MENU");
+        io.print("1. Edit title");
+        io.print("2. Edit release date");
+        io.print("3. Edit MPAA rating");
+        io.print("4. Edit director");
+        io.print("5. Edit studio");
+        io.print("6. Edit notes");
+        io.print("7. Exit");
+
+        return io.readInt("Please select a menu option", 1, 7);
+    }
+
+
+    // EDIT MENU SELECTIONS
+    public String printEditTitle() { return io.readString("Please enter the new title");}
+
+    public String printEditDate() { return io.readString("Please enter new release date");}
+
+    public String printEditRating() {return io.readString("Please enter new rating");}
+
+    public String printEditDirector() {return io.readString("Please enter new director");}
+
+    public String printEditStudio() {return io.readString("Please enter new distributor");}
+
+    public String printEditNotes() {return io.readString("Please enter new notes");}
+
+
+    public String getSearchTerm() {return io.readString("Please enter search keyword");}
+
+
     //TODO Create a method which searches the DVD list for a particular title. Use .contains String method.
 
     //TODO Later Add Exceptions and File persistence
+
+
+    // this is used for confirmation when a user wants to remove a DVD
+    public int getConfirmYN() {
+        return io.readInt("Confirm? 1. Yes / 2. No", 1, 2);
+    }
 
     // this asks the user for the title of the movie that will be displayed by displayDVD: sent to DAO in controller
     public String getDvdTitleChoice() {
         return io.readString("Please enter the title of a DVD");
     }
+
+
+    //MISC banners for menu elements
 
     public void printCreateDVDBanner() {
         io.print("<<< CREATING A NEW DVD >>>");
@@ -105,6 +142,7 @@ public class DVDLibView {
 
     public void printSuccessBanner() {
         io.print("<<< SUCCESS >>>");
+        io.readString("Press enter to continue"); // ensures the user sees their operation was successful
     }
 
     public void printUnknownCommandMessage() {
@@ -114,5 +152,7 @@ public class DVDLibView {
     public void printExitMessage() {
         io.print("--- THANK YOU ---");
     }
+
+    public void printCancel() { io.readString(" --- CANCELING OPERATION ---"); }
 
 }

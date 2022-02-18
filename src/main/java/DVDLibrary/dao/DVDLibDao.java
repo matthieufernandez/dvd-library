@@ -13,7 +13,7 @@ public interface DVDLibDao {
 
         DVD removeDVD(String title);
 
-        DVD searchForDVD(String srcString);
+        DVD searchForDVD(String searchTerm);
 
     }
 

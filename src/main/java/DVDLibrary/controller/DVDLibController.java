@@ -34,10 +34,10 @@ public class DVDLibController {
                     getDVD();
                     break;
                 case 5:
-                    io.print("5. edit a dvd");
+                    editDVD();
                     break;
                 case 6:
-                    io.print("6. search a dvd");
+                    searchForDVD();
                     break;
                 case 7:
                     keepGoing = false;
@@ -77,8 +77,74 @@ public class DVDLibController {
     private void removeDVD() {
         view.printDeleteBanner();
         String title = view.getDvdTitleChoice();
-        DVD dvd = dao.removeDVD(title);
-        view.printSuccessBanner();
+        int choice = view.getConfirmYN();
+        if (choice != 2) {
+            dao.removeDVD(title);
+            view.printSuccessBanner();
+        } else {
+            view.printCancel();
+        }
+    }
+
+    private void editDVD() {
+        view.printEditBanner();
+        String title = view.getDvdTitleChoice();
+        DVD dvd = dao.getDVD(title);
+        view.displayDVD(dvd);
+        int editMenuSelection = view.printEditMenu();
+
+        switch(editMenuSelection) {
+            case 1:
+                String newTitle = view.printEditTitle();
+                dvd.setTitle(newTitle);
+                dao.addDVD(newTitle, dvd);
+                dao.removeDVD(title);
+                view.printSuccessBanner();
+                break;
+
+            case 2:
+                String newDate = view.printEditDate();
+                dvd.setDate(newDate);
+                view.printSuccessBanner();
+                break;
+
+            case 3:
+                String newRating = view.printEditRating();
+                dvd.setRating(newRating);
+                view.printSuccessBanner();
+                break;
+
+            case 4:
+                String newDirector = view.printEditDirector();
+                dvd.setDirector(newDirector);
+                view.printSuccessBanner();
+                break;
+
+            case 5:
+                String newStudio = view.printEditStudio();
+                dvd.setStudio(newStudio);
+                view.printSuccessBanner();
+                break;
+
+            case 6:
+                String newNotes = view.printEditNotes();
+                dvd.setNotes(newNotes);
+                view.printSuccessBanner();
+                break;
+
+            case 7:
+                view.printCancel();
+                break;
+
+            default:
+                view.printUnknownCommandMessage();
+        }
+    }
+
+    private void searchForDVD() {
+        view.printSearchBanner();
+        String searchTerm = view.getSearchTerm();
+
     }
 
     private void unknownMessage() {
