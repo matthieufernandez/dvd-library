@@ -143,7 +143,9 @@ public class DVDLibController {
 
     private void searchForDVD() {
         view.printSearchBanner();
-        String searchTerm = view.getSearchTerm();
+        String searchTerm = String.format("%S", view.getSearchTerm());
+        List<DVD> DVDsList = dao.searchForDVD(searchTerm);
+        view.displayAllDVDs(DVDsList);
 
     }
 

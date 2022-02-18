@@ -2,10 +2,7 @@ package DVDLibrary.dao;
 
 import DVDLibrary.dto.DVD;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class DVDLibDaoImpl implements DVDLibDao {
     private Map<String, DVD> DVDs = new HashMap<>();
@@ -33,8 +30,19 @@ public class DVDLibDaoImpl implements DVDLibDao {
         return DVDs.remove(title);
     }
 
+    // TODO use searchTerm to look through values and find a match in the Object parameters
     @Override
-    public DVD searchForDVD(String searchTerm) {
-        return null;
+    public List<DVD> searchForDVD(String searchTerm) {
+        List<DVD> returnList = new ArrayList<>();
+        Set<String> titles = DVDs.keySet();
+        for (String t: titles) {
+            String formattedKey = String.format("%S", t);
+            if (formattedKey.contains(searchTerm)) {
+                DVD responseDVD = DVDs.get(t);
+                returnList.add(responseDVD);
+
+            }
+        }
+        return returnList;
     }
 }
