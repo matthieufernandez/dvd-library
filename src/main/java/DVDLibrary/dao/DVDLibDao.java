@@ -5,15 +5,15 @@ import DVDLibrary.dto.DVD;
 import java.util.List;
 
 public interface DVDLibDao {
-        DVD addDVD(String title, DVD dvd);
+        DVD addDVD(String title, DVD dvd) throws DVDLibDaoException;
 
-        List<DVD> getAllDVDs();
+        List<DVD> getAllDVDs() throws DVDLibDaoException;
 
-        DVD getDVD(String title);
+        DVD getDVD(String title) throws DVDLibDaoException;
 
-        DVD removeDVD(String title);
+        DVD removeDVD(String title) throws DVDLibDaoException;
 
-        List<DVD> searchForDVD(String searchTerm);
+        List<DVD> searchForDVD(String searchTerm) throws DVDLibDaoException;
 
     }
 

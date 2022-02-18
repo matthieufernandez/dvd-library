@@ -101,12 +101,6 @@ public class DVDLibView {
 
     public String getSearchTerm() {return io.readString("Please enter search keyword");}
 
-
-    //TODO Create a method which searches the DVD list for a particular title. Use .contains String method.
-
-    //TODO Later Add Exceptions and File persistence
-
-
     // this is used for confirmation when a user wants to remove a DVD
     public int getConfirmYN() {
         return io.readInt("Confirm? 1. Yes / 2. No", 1, 2);
@@ -158,5 +152,10 @@ public class DVDLibView {
     }
 
     public void printCancel() { io.readString(" --- CANCELING OPERATION ---"); }
+
+    public void displayErrorMessage(String errorMsg) {
+        io.print("!!! ERROR !!!");
+        io.print(errorMsg);
+    }
 
 }
