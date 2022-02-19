@@ -79,7 +79,7 @@ public class DVDLibDaoImpl implements DVDLibDao {
             out.println(DVDAsText);
             out.flush();
         }
-        out.flush();
+        out.close();
     }
 
 

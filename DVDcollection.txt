@@ -1,3 +1,6 @@
-Fargo::Fargo::Fargo::Fargo::1996::R::The Coen Brothers::
-Pulp Fiction::Pulp Fiction::Pulp Fiction::Pulp Fiction::Pulp Fiction::1994::R::
-Stalker::Stalker::Stalker::1979::R::Andrei Tarkovsky::Goskino::
+Inherent Vice::Inherent Vice::Inherent Vice::2027::R::Paul Thomas Anderson::MGM::
+Fargo::Fargo::Fargo::Fargo::Fargo::Fargo::Fargo::
+Pulp Fiction::Pulp Fiction::Pulp Fiction::Pulp Fiction::Pulp Fiction::Pulp Fiction::Pulp Fiction::
+Stalker::Stalker::Stalker::Stalker::Stalker::Stalker::1979::
+Barry Lyndon::Barry Lyndon::Barry Lyndon::Barry Lyndon::1981::R::Stanley Kubrick::
+A Clockwork Orange::A Clockwork Orange::1971::R::Stanley Kubrick::Warner Bros::alex and the droogs are having a tough time::
