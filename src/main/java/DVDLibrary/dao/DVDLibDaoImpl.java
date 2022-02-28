@@ -25,7 +25,7 @@ public class DVDLibDaoImpl implements DVDLibDao {
         return FileDVD;
     }
 
-    public void loadDVDs() throws DVDLibDaoException {
+    private void loadDVDs() throws DVDLibDaoException {
         Scanner scanner;
 
         try {
@@ -52,7 +52,6 @@ public class DVDLibDaoImpl implements DVDLibDao {
     private String marshallDVD(DVD aDVD) {
         String DVDAsText = aDVD.getTitle() + DELIMETER;
 
-        DVDAsText += aDVD.getTitle() + DELIMETER;
         DVDAsText += aDVD.getDate() + DELIMETER;
         DVDAsText += aDVD.getRating() + DELIMETER;
         DVDAsText += aDVD.getDirector() + DELIMETER;
@@ -125,7 +124,6 @@ public class DVDLibDaoImpl implements DVDLibDao {
 
             }
         }
-        writeDVD();
         return returnList;
     }
 }

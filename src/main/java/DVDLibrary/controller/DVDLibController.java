@@ -106,7 +106,7 @@ public class DVDLibController {
 
         switch(editMenuSelection) {
             case 1:
-                String newTitle = view.printEditTitle();
+                String newTitle = view.printEditTitle(); // TODO: fix this section as it throws an exception
                 dvd.setTitle(newTitle);
                 dao.addDVD(newTitle, dvd);
                 dao.removeDVD(title);
@@ -114,32 +114,37 @@ public class DVDLibController {
                 break;
 
             case 2:
-                String newDate = view.printEditDate();
+                String newDate = view.printEditDate(); // TODO: figure out why info gets pushed into next DVD property when updating
                 dvd.setDate(newDate);
+                dao.addDVD(title, dvd);
                 view.printSuccessBanner();
                 break;
 
             case 3:
                 String newRating = view.printEditRating();
                 dvd.setRating(newRating);
+                dao.addDVD(title, dvd);
                 view.printSuccessBanner();
                 break;
 
             case 4:
                 String newDirector = view.printEditDirector();
                 dvd.setDirector(newDirector);
+                dao.addDVD(title, dvd);
                 view.printSuccessBanner();
                 break;
 
             case 5:
                 String newStudio = view.printEditStudio();
                 dvd.setStudio(newStudio);
+                dao.addDVD(title, dvd);
                 view.printSuccessBanner();
                 break;
 
             case 6:
                 String newNotes = view.printEditNotes();
                 dvd.setNotes(newNotes);
+                dao.addDVD(title, dvd);
                 view.printSuccessBanner();
                 break;
 

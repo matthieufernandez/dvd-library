@@ -98,7 +98,6 @@ public class DVDLibView {
 
     public String printEditNotes() {return io.readString("Please enter new notes");}
 
-
     public String getSearchTerm() {return io.readString("Please enter search keyword");}
 
     // this is used for confirmation when a user wants to remove a DVD
