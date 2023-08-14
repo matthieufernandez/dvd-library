@@ -6,12 +6,12 @@ import java.io.*;
 import java.util.*;
 
 public class DVDLibDaoImpl implements DVDLibDao {
-    private Map<String, DVD> DVDs = new HashMap<>();
+    private final Map<String, DVD> DVDs = new HashMap<>();
     public static final String DVD_FILE = "DVDcollection.txt";
-    public static final String DELIMETER = "::";
+    public static final String DELIMITER = "::";
 
     private DVD unmarshallDVDs(String DVDAsText) {
-        String[] DVDIndex = DVDAsText.split(DELIMETER);
+        String[] DVDIndex = DVDAsText.split(DELIMITER);
         String DVDTitle = DVDIndex[0];
         DVD FileDVD = new DVD(DVDTitle);
 
@@ -23,6 +23,18 @@ public class DVDLibDaoImpl implements DVDLibDao {
         FileDVD.setNotes(DVDIndex[5]);
 
         return FileDVD;
+    }
+
+    private String marshallDVD(DVD aDVD) {
+        String DVDAsText = aDVD.getTitle() + DELIMITER;
+
+        DVDAsText += aDVD.getDate() + DELIMITER;
+        DVDAsText += aDVD.getRating() + DELIMITER;
+        DVDAsText += aDVD.getDirector() + DELIMITER;
+        DVDAsText += aDVD.getStudio() + DELIMITER;
+        DVDAsText += aDVD.getNotes() + DELIMITER;
+
+        return DVDAsText;
     }
 
     private void loadDVDs() throws DVDLibDaoException {
@@ -49,25 +61,13 @@ public class DVDLibDaoImpl implements DVDLibDao {
 
     }
 
-    private String marshallDVD(DVD aDVD) {
-        String DVDAsText = aDVD.getTitle() + DELIMETER;
-
-        DVDAsText += aDVD.getDate() + DELIMETER;
-        DVDAsText += aDVD.getRating() + DELIMETER;
-        DVDAsText += aDVD.getDirector() + DELIMETER;
-        DVDAsText += aDVD.getStudio() + DELIMETER;
-        DVDAsText += aDVD.getNotes() + DELIMETER;
-
-        return DVDAsText;
-    }
-
     public void writeDVD() throws DVDLibDaoException {
         PrintWriter out;
 
         try {
             out = new PrintWriter(new FileWriter(DVD_FILE));
         } catch (IOException e) {
-            throw new DVDLibDaoException(
+            throw new DVDLibDaoException (
                     "!!! COULD NOT SAVE DVD DATA !!!", e);
         }
 

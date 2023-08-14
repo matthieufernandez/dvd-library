@@ -14,11 +14,7 @@ public class UserIOConsoleImpl implements UserIO {
     @Override
     public String readString(String prompt) {
         System.out.println(prompt);
-        String name = "";
-
-        name += userInput.nextLine();
-
-        return name;
+        return userInput.nextLine();
     }
 
 
@@ -104,7 +100,7 @@ public class UserIOConsoleImpl implements UserIO {
         long result;
         do {
             result = readLong(prompt);
-        } while (result < min || result > max);
+        } while (result <= min || result >= max);
 
         return result;
     }
